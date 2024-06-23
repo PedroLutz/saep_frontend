@@ -9,21 +9,21 @@ const Tabela = ({autenticacao, dadosUser}) => {
     const{isAutenticado, autenticar} = autenticacao;
     const router = useRouter();
 
-    const fetchVeiculosPorConcessionaria = async () => {
-        console.log(dados.concessionarias_id);
-        const dadosVeiculos = await buscarDados(`automoveis/por_concessionaria/${dados.concessionarias_id}`)
-    }
-
     useEffect(() => {
         !isAutenticado && router.push('/login')
         setDados(dadosUsuario);
         fetchVeiculosPorConcessionaria();
-    }, []);
+    });
 
+    function fetchVeiculosPorConcessionaria() {
+        console.log(dados.concessionarias_id);
+        // const dadosVeiculos = await buscarDados(`automoveis/por_concessionaria/${dados.concessionarias_id}`)
+    }
 
     return(
         <div>
-            macaco: {dados.email}
+            macaco: {dados.email}<br/>
+            concessionarias_id: {dados.concessionarias_id}
         </div>
     )
 }
